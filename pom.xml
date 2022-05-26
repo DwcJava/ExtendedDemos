@@ -29,24 +29,7 @@
     <build>
         <finalName>ExtendedDemos</finalName>
     <plugins>
-        <plugin>
-            <groupId>com.googlecode.maven-download-plugin</groupId>
-            <artifactId>download-maven-plugin</artifactId>
-            <version>1.4.2</version>
-            <executions>
-                <execution>
-                    <id>install-dwcj</id>
-                    <phase>clean</phase>
-                    <goals>
-                        <goal>wget</goal>
-                    </goals>
-                    <configuration>
-                        <uri>https://github.com/DwcJava/engine/releases/download/${version}/dwcj-${version}.jar</uri>
-                        <outputDirectory>${jar-directory}</outputDirectory>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
+
 
         <!-- Set the jar output Directory -->
         <plugin>
