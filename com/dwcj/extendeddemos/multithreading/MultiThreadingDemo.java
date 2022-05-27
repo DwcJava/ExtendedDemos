@@ -63,9 +63,15 @@ public class MultiThreadingDemo extends App {
 
     }
 
-    private void close(ButtonPushEvent buttonPushEvent) {
+    @Override
+    public void cleanup() {
+        super.cleanup();
         thread1.interrupt();
         thread2.interrupt();
+        System.out.println("Done Cleanup");
+    }
+
+    private void close(ButtonPushEvent buttonPushEvent) {
         terminate();
     }
 }
