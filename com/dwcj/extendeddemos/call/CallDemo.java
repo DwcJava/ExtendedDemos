@@ -39,9 +39,9 @@ public class CallDemo extends App {
         Label explanation = new Label("<html><p>This Demo Shows how to invoke the following legacy CALL public program.</p>");
         panel.add(explanation);
 
-        programsource = new String("0010 ENTER A,B,C,D$\n"+
-                "0020 LET C = A * B\n"+
-                "0030 LET D$=\"The Result is \"+STR(C)+\".\"\n"+
+        programsource = new String("0010 ENTER A,B%,C%,D$\n"+
+                "0020 LET C% = INT(A * B%)\n"+
+                "0030 LET D$=\"The Result is \"+STR(C%)+\".\"\n"+
                 "0040 EXIT\n");
 
         //this could later be changed to a MultiLineEdit so the user of this demo can edit the call
@@ -49,15 +49,16 @@ public class CallDemo extends App {
         sourcecode.setStyle("font-family","monospace");
         panel.add(sourcecode);
 
-        ipa = new TextBox("4");
+        ipa = new TextBox("4.56");
         ipa.setAttribute("type","number");
-        ipa.setAttribute("label","Value for A");
+        ipa.setAttribute("step","0.01");
+        ipa.setAttribute("label","Value for A (Numeric)");
         ipa.setStyle("padding-top","40px");
         panel.add(ipa);
 
         ipb = new TextBox("5");
         ipb.setAttribute("type","number");
-        ipb.setAttribute("label","Value for B");
+        ipb.setAttribute("label","Value for B% (Integer)");
         ipb.setStyle("padding-top","20px");
         panel.add(ipb);
 
@@ -88,8 +89,8 @@ public class CallDemo extends App {
         IDwcjBBjBridge h = Environment.getInstance().getDwcjHelper();
         ArrayList args = new ArrayList<BBjVar>();
         args.add(new BBjVar(new BigDecimal(ipa.getText())));
-        args.add(new BBjVar(new BigDecimal(ipb.getText())));
-        args.add(new BBjVar(new BigDecimal(0)));
+        args.add(new BBjVar(Integer.valueOf(ipb.getText())));
+        args.add(new BBjVar(0));
         args.add(new BBjVar(""));
 
         BBjVar v = new BBjVar("");
@@ -99,8 +100,8 @@ public class CallDemo extends App {
 
         String r = "Result: \n";
         r = r+"A="+ret.get(0).getNumVal()+"\n";
-        r = r+"B="+ret.get(1).getNumVal()+"\n";
-        r = r+"C="+ret.get(2).getNumVal()+"\n";
+        r = r+"B%="+ret.get(1).getIntVal()+"\n";
+        r = r+"C%="+ret.get(2).getIntVal()+"\n";
         r = r+"D$="+ret.get(3).getStrVal()+"\n";
         result.setText(r);
 
