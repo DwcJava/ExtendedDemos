@@ -1,4 +1,4 @@
-package com.dwcj.extendeddemos.multithreading;
+package org.dwcj.extendeddemos.multithreading;
 
 import org.dwcj.controls.TextBox;
 import org.dwcj.events.ButtonPushEvent;
