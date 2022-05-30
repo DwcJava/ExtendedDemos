@@ -86,16 +86,14 @@ public class CallDemo extends App {
             throw new RuntimeException(e);
         }
 
-        IDwcjBBjBridge h = Environment.getInstance().getDwcjHelper();
+
         ArrayList args = new ArrayList<BBjVar>();
         args.add(new BBjVar(new BigDecimal(ipa.getText())));
         args.add(new BBjVar(Integer.valueOf(ipb.getText())));
         args.add(new BBjVar(0));
         args.add(new BBjVar(""));
 
-        BBjVar v = new BBjVar("");
-        BBjVar.BBjGenericType t = v.getType();
-
+        IDwcjBBjBridge h = Environment.getInstance().getDwcjHelper();
         ArrayList<BBjVar> ret = h.call(f.getAbsolutePath(), args);
 
         String r = "Result: \n";
